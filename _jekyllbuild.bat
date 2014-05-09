@@ -1,1 +1,1 @@
-jekyll build
+jekyll build --config _config.yml,_config_local.yml
