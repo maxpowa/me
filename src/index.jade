@@ -1,0 +1,62 @@
+doctype html
+
+//
+  Hey you! Yeah you, snoopin' up in this page! Just look at the sourcecode
+  instead... https://github.com/maxpowa/maxpowa.github.io
+html
+  head
+    // Back to the basics
+    meta(charset='utf-8')
+    title Maxfield Gurela
+    meta(name='description', content='')
+    meta(name='author', content='')
+    
+    // Nobody browses the internet on a big screen anymore.
+    meta(name='viewport' content='width=device-width, initial-scale=1')
+    
+    // Font, because I'm not cool enough for CSS imports.
+    link(href='//fonts.googleapis.com/css?family=Raleway:400,300,500', rel='stylesheet', type='text/css')
+
+    // CSS. Could be inlined for more speed but this keeps the sourcecode nice
+    // TODO: Inline the CSS with gulp 
+    link(rel='stylesheet', href='styles/skeleton.css')
+    link(rel='stylesheet', href='styles/custom.css')
+
+
+
+  body
+    // Skeleton container
+    .container
+      section.header.u-text-center
+        img.circle.avatar(src='//gravatar.com/avatar/c94c932597d6b227ffeb9a31c45c1e98?s=256')
+        h2.title Max Gurela
+        p.about I'm a software geek
+
+      // I like it when you whisper sweet nothings to me about how pretty
+      // my code is
+      section.experience
+
+        h6.experience-header Experience
+        // TODO: Javascript background faded image thing
+        .row.job.javascript
+          .one.columns
+            a.logo-wrapper(target='_blank', href='//servicemax.com')
+              span image goes here
+          .eleven.columns
+            h6.job-header ServiceMax
+            p.job-description
+              | Lotta stuff
+              | goes here
+              | newlines included
+
+        // TODO: Python background faded image thing
+        .row.sideproject.python
+          .one.columns
+            a.logo-wrapper(target='_blank', href='//servicemax.com')
+              span image goes here
+          .eleven.columns
+            h6.job-header Sopel
+            p.job-description
+              | Lotta stuff
+              | goes here
+              | newlines included
