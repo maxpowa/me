@@ -1,63 +1,63 @@
-var gulp = require('gulp');
-var jade = require('gulp-jade');
+const gulp = require('gulp');
+const jade = require('gulp-jade');
 
-var connect = require('gulp-connect');
+const connect = require('gulp-connect');
 
-gulp.task('devserver', function() {
+gulp.task('devserver', () =>
   connect.server({
     fallback: 'dist/index.html',
     livereload: true,
     root: 'dist'
-  });
-});
+  })
+);
 
-gulp.task('jade', function() {
+gulp.task('jade', () =>
   gulp.src('./src/**/*.jade')
     .pipe(jade({
       pretty: true
     }))
     .pipe(gulp.dest('./dist/'))
-    .pipe(connect.reload());
-});
+    .pipe(connect.reload())
+);
 
-var autoprefix = require('gulp-autoprefixer');
-var minify_css = require('gulp-minify-css');
+const autoprefix = require('gulp-autoprefixer');
+const minify_css = require('gulp-minify-css');
 
-gulp.task('styles', function() {
+gulp.task('styles', () =>
   gulp.src('./src/styles/**/*.css')
     .pipe(autoprefix('last 2 versions'))
     .pipe(minify_css())
     .pipe(gulp.dest('./dist/styles/'))
-    .pipe(connect.reload());
-});
+    .pipe(connect.reload())
+);
 
-var uglify = require('gulp-uglify');
+const uglify = require('gulp-uglify');
 
-gulp.task('js', function() {
+gulp.task('js', () =>
   gulp.src('./src/js/**/*.js')
     .pipe(uglify())
     .pipe(gulp.dest('./dist/js/'))
-    .pipe(connect.reload());
-});
+    .pipe(connect.reload())
+);
 
-gulp.task('img', function() {
+const imagemin = require('gulp-imagemin');
+
+gulp.task('img', () =>
   gulp.src('./src/img/**/*.*')
+    .pipe(imagemin())
     .pipe(gulp.dest('./dist/img/'))
-});
+);
 
-gulp.task('default', ['jade', 'styles', 'js', 'img', 'devserver'], function() {
+gulp.task('default', ['jade', 'styles', 'js', 'img', 'devserver'], () => {
   // watch for HTML changes
-  gulp.watch('./src/**/*.jade', function() {
-    gulp.run('jade');
-  });
+  gulp.watch('./src/**/*.jade', () => gulp.run('jade') )
 
   // watch for JS changes
-  gulp.watch('./src/js/**/*.js', function() {
-    gulp.run('js');
-  });
+  gulp.watch('./src/js/**/*.js', () => gulp.run('js') )
 
   // watch for CSS changes
-  gulp.watch('./src/styles/**/*.css', function() {
-    gulp.run('styles');
-  });
+  gulp.watch('./src/styles/**/*.css', () => gulp.run('styles') )
+
+  // Watch for image changes
+  gulp.watch('./src/img/**/*.*', () => gulp.run('img') )
 });

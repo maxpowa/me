@@ -7,20 +7,22 @@ html
   head
     // Back to the basics
     meta(charset='utf-8')
-    title Maxfield Gurela
-    meta(name='description', content='')
-    meta(name='author', content='')
-    
+    title Max Gurela
+    meta(name='description' content='')
+    meta(name='author' content='Maxfield Gurela <max.gurela AT gmail DOT com>')
+
     // Nobody browses the internet on a big screen anymore.
     meta(name='viewport' content='width=device-width, initial-scale=1')
-    
+
+    link(rel='icon' href='img/favicon.png')
+
     // Font, because I'm not cool enough for CSS imports.
-    link(href='//fonts.googleapis.com/css?family=Raleway:400,300,500', rel='stylesheet', type='text/css')
+    link(rel='stylesheet' href='//fonts.googleapis.com/css?family=Raleway:400,300,500' type='text/css')
 
     // CSS. Could be inlined for more speed but this keeps the sourcecode nice
-    // TODO: Inline the CSS with gulp 
-    link(rel='stylesheet', href='styles/skeleton.css')
-    link(rel='stylesheet', href='styles/custom.css')
+    // TODO: Inline the CSS with gulp
+    link(rel='stylesheet' href='styles/skeleton.css' type='text/css')
+    link(rel='stylesheet' href='styles/custom.css' type='text/css')
 
 
 
@@ -36,15 +38,17 @@ html
       // my code is
       section.experience
 
-        h6.experience-header Experience
-        // TODO: Javascript background faded image thing
+        h6.header Experience
+
         .row.job.javascript
-          .one.columns
-            a.logo-wrapper(target='_blank', href='//servicemax.com')
-              span image goes here
+          .one.columns.logo
+            a.logo-wrapper(target='_blank' href='//servicemax.com')
+              img.logo(src='img/servicemax.png')
           .eleven.columns
-            h6.job-header ServiceMax
-            p.job-description
+            h6.header ServiceMax
+            // Jade doesn't require the hanging pipes but they help syntax
+            // highlighting, so I'm using them here. They look cleaner as well.
+            p.description
               | Lotta stuff
               | goes here
               | newlines included
@@ -52,11 +56,11 @@ html
         // TODO: Python background faded image thing
         .row.sideproject.python
           .one.columns
-            a.logo-wrapper(target='_blank', href='//servicemax.com')
-              span image goes here
+            a.logo-wrapper(target='_blank' href='//sopel.chat')
+              img.logo(src='img/sopel.png')
           .eleven.columns
-            h6.job-header Sopel
-            p.job-description
+            h6.header Sopel
+            p.description
               | Lotta stuff
               | goes here
               | newlines included

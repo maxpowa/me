@@ -1,7 +1,12 @@
+/*
+Yes, inches are horrible.
+But hey you get this cool, letter-sized page from it.
+*/
+
 .container {
   margin-top: 2em;
-  max-width: 960px;
-  padding: 2em;
+  padding: 1em;
+  max-width: 8.5in;
 }
 
 h2.title {
@@ -20,32 +25,72 @@ img.avatar {
   display: none;
 }
 
-.experience-header {
+.experience > .header {
   font-weight: 600;
   margin-top: 1.5rem;
   margin-bottom: .5rem;
 }
 
-/* Larger than mobile */
+.columns > .header {
+  margin-bottom: 0.1em;
+}
+
+.experience > .javascript {
+  background-image: url('../img/javascript.png');
+  background-position: right bottom;
+  background-repeat: no-repeat;
+}
+
+.experience > .python {
+  background-image: url('../img/python.png');
+  background-position: right bottom;
+  background-repeat: no-repeat;
+}
+
+a.logo-wrapper {
+  display:none;
+}
+.logo {
+  max-width:100%;
+}
+
+
+/* Larger than mobile but probably still a phone */
 @media (min-width: 400px) {
-  img.avatar {
-    display: inline;
-    max-height: 10%;
-    width: auto;
-  }
 }
 
 /* Larger than phablet (also point when grid becomes active) */
-@media (min-width: 550px) {}
+@media (min-width: 560px) {
+  img.avatar {
+    display: inline;
+    max-height: 2in;
+    width: auto;
+  	/*box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);*/
+    border-style: dashed;
+    border-width: 1px;
+    border-color: #a0a0a0;
+  }
+
+  a.logo-wrapper {
+    display: block;
+    margin-top: 0.5em;
+  }
+
+  .container {
+    padding: 2em;
+  }
+}
 
 /* Larger than tablet */
 @media (min-width: 750px) {}
 
-/* Larger than desktop */
-@media (min-width: 960px) {
+/* Larger than a piece of letter paper */
+@media (min-width: 8.5in) {
   .container {
   	box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
     background-color: white;
+    min-height: 11in;
+    max-height: 11in;
   }
 
   body {
