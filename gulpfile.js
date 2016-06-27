@@ -21,7 +21,7 @@ gulp.task('jade', () =>
 );
 
 const autoprefix = require('gulp-autoprefixer');
-const minify_css = require('gulp-minify-css');
+const minify_css = require('gulp-clean-css');
 
 gulp.task('styles', () =>
   gulp.src('./src/styles/**/*.css')
