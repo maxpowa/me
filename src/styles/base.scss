@@ -10,11 +10,12 @@ But hey you get this cool, letter-sized page from it.
 
 .container {
   margin-top: 2em;
+  margin-bottom: 2em;
   padding: 1em;
   max-width: 8.5in;
 }
 
-h2.title {
+h3.title {
   margin-bottom: 0.1em;
 }
 
@@ -40,16 +41,18 @@ img.avatar {
   margin-bottom: 0.1em;
 }
 
-.experience > .javascript {
-  background-image: url('../img/javascript.png');
+.experience > .language {
   background-position: right bottom;
   background-repeat: no-repeat;
+  background-size: 7.5em;
+}
+
+.experience > .javascript {
+  background-image: url('../img/javascript.png');
 }
 
 .experience > .python {
   background-image: url('../img/python.png');
-  background-position: right bottom;
-  background-repeat: no-repeat;
 }
 
 a.logo-wrapper {
@@ -68,15 +71,19 @@ a.logo-wrapper {
 @media (min-width: 560px) {
   img.avatar {
     display: inline;
-    min-width: 2in;
-    max-width: 2in;
-    max-height: 2in;
-    min-height: 2in;
+    min-width: 1.5in;
+    max-width: 1.5in;
+    max-height: 1.5in;
+    min-height: 1.5in;
     width: auto;
   	/*box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);*/
     border-style: dashed;
     border-width: 1px;
     border-color: #a0a0a0;
+  }
+
+  .experience > .language {
+    background-size: 23vw;
   }
 
   a.logo-wrapper {
@@ -98,11 +105,16 @@ a.logo-wrapper {
   	box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
     background-color: white;
     min-height: 11in;
-    max-height: 11in;
+    // max-height: 11in;
+  }
+
+  .experience > .language {
+    background-size: auto;
   }
 
   body {
-    background-image: url('../img/cream_dust_@2X.png')
+    background-image: url('../img/cream_dust_@2X.png');
+    background-color: #FAFAFA;
   }
 }
 
