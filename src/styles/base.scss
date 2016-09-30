@@ -1,3 +1,8 @@
+@import 'https://fonts.googleapis.com/css?family=Raleway:300,400,500';
+
+// We're using the Skeleton CSS Boilerplate
+@import '_skeleton.scss';
+
 /*
 Yes, inches are horrible.
 But hey you get this cool, letter-sized page from it.
@@ -63,7 +68,10 @@ a.logo-wrapper {
 @media (min-width: 560px) {
   img.avatar {
     display: inline;
+    min-width: 2in;
+    max-width: 2in;
     max-height: 2in;
+    min-height: 2in;
     width: auto;
   	/*box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);*/
     border-style: dashed;

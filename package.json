@@ -18,12 +18,17 @@
   "homepage": "https://github.com/maxpowa/maxpowa.github.io#readme",
   "devDependencies": {
     "gulp": "^3.9.1",
-    "gulp-autoprefixer": "^3.1.0",
-    "gulp-changed": "^1.3.0",
-    "gulp-clean-css": "^2.0.10",
-    "gulp-connect": "^4.1.0",
+    "gulp-connect": "^5.0.0",
     "gulp-imagemin": "^3.0.1",
-    "gulp-jade": "^1.1.0",
-    "gulp-uglify": "^1.5.4"
+    "gulp-pug": "^3.0.4",
+    "gulp-uglify": "^2.0.0",
+    "jstransformer-clean-css": "^1.1.1",
+    "jstransformer-scss": "^0.1.3"
+  },
+  "dependencies": {},
+  "jshintConfig": {
+    "globals": {
+      "esversion": 6
+    }
   }
 }

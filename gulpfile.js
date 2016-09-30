@@ -1,5 +1,5 @@
 const gulp = require('gulp');
-const jade = require('gulp-jade');
+const pug = require('gulp-pug');
 
 const connect = require('gulp-connect');
 
@@ -11,23 +11,12 @@ gulp.task('devserver', () =>
   })
 );
 
-gulp.task('jade', () =>
-  gulp.src('./src/**/*.jade')
-    .pipe(jade({
+gulp.task('pug', () =>
+  gulp.src('./src/**/*.pug')
+    .pipe(pug({
       pretty: true
     }))
     .pipe(gulp.dest('./dist/'))
-    .pipe(connect.reload())
-);
-
-const autoprefix = require('gulp-autoprefixer');
-const minify_css = require('gulp-clean-css');
-
-gulp.task('styles', () =>
-  gulp.src('./src/styles/**/*.css')
-    .pipe(autoprefix('last 2 versions'))
-    .pipe(minify_css())
-    .pipe(gulp.dest('./dist/styles/'))
     .pipe(connect.reload())
 );
 
@@ -48,15 +37,12 @@ gulp.task('img', () =>
     .pipe(gulp.dest('./dist/img/'))
 );
 
-gulp.task('default', ['jade', 'styles', 'js', 'img', 'devserver'], () => {
+gulp.task('default', ['pug', 'js', 'img', 'devserver'], () => {
   // watch for HTML changes
-  gulp.watch('./src/**/*.jade', () => gulp.run('jade') )
+  gulp.watch('./src/**/*.pug', () => gulp.run('pug') )
 
   // watch for JS changes
   gulp.watch('./src/js/**/*.js', () => gulp.run('js') )
-
-  // watch for CSS changes
-  gulp.watch('./src/styles/**/*.css', () => gulp.run('styles') )
 
   // Watch for image changes
   gulp.watch('./src/img/**/*.*', () => gulp.run('img') )
