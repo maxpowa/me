@@ -27,28 +27,57 @@ html
   body
     // Skeleton container
     .container
-      section.header.u-text-center
+      section.intro.u-text-center
         img.circle.avatar(src='//gravatar.com/avatar/c94c932597d6b227ffeb9a31c45c1e98?s=256')
         h3.title Max Gurela
-        p.about Python/C#/NodeJS/Java/Groovy Software Engineer
+        .about Python, C#, NodeJS, Java, Groovy Software Engineer<br />
+        .contact
+          span.mail #[a(href="mailto:max.gurela@gmail.com")= "max.gurela@gmail.com"]
+          span.split |
+          span.phone #[a(href="tel:+19255494078")= "+1 925 549 4078"]
+
+      section.summary
+        h5.header Summary
+        p.
+          TODO: Stop being lazy and write this.
+
+      section.skills
+        h5.header Skills
+        ul
+          li
+            b Programming Languages: 
+            span Java, C#, Python, Javascript, Groovy, Crystal
+          li
+            b Web Frameworks: 
+            span Sencha ExtJS, Bootstrap, jQuery, Polymer
+          li
+            b Environments: 
+            span Linux, Android, iOS, Windows, NodeJS
 
       // I like it when you whisper sweet nothings about my code
       section.experience
-
-        h6.header Experience
+        h5.header Experience
 
         .row.job.language.javascript
           .one.columns.logo
             a.logo-wrapper(target='_blank' href='//servicemax.com')
               img.logo(src='img/servicemax.png')
           .eleven.columns
-            h6.header ServiceMax
-            // Jade doesn't require the hanging pipes but they help syntax
-            // highlighting, so I'm using them here. They look cleaner as well.
-            p.description
-              | Lotta stuff
-              | goes here
-              | newlines included
+            h6.header 
+              span.title Software Engineer
+              span.split •
+              span.company ServiceMax
+            //- Pug doesn't require the hanging pipes but they help syntax
+            //- highlighting, so I'm using them here. They look cleaner as well.
+            .description
+              .quote.
+                ServiceMax is a provider of cloud-based field service management solutions for technicians, managers and executives.
+              p.
+
+              ul
+                li Some things
+                li Other stuff
+
 
         // TODO: Python background faded image thing
         .row.sideproject.language.python
@@ -56,8 +85,14 @@ html
             a.logo-wrapper(target='_blank' href='//sopel.chat')
               img.logo(src='img/sopel.png')
           .eleven.columns
-            h6.header Sopel
-            p.description
-              | Lotta stuff
-              | goes here
-              | newlines included
+            h6.header 
+              span.title Maintainer
+              span.split •
+              span.company Sopel
+            .description
+              .quote.
+                Sopel is a simple, easy-to-use, open-source IRC utility bot, written in Python. It's designed to be easy to use, easy to run, and easy to make new features for.
+              p.
+                
+              ul
+                li Open source

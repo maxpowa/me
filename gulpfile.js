@@ -11,6 +11,11 @@ gulp.task('devserver', () =>
   })
 );
 
+gulp.task('cname', () =>
+  gulp.src('./CNAME')
+    .pipe(gulp.dest('./dist/'))
+);
+
 gulp.task('pug', () =>
   gulp.src('./src/**/*.pug')
     .pipe(pug({
@@ -37,9 +42,19 @@ gulp.task('img', () =>
     .pipe(gulp.dest('./dist/img/'))
 );
 
+const ghPages = require('gulp-gh-pages');
+
+gulp.task('deploy', ['cname', 'pug', 'js', 'img'], () =>
+  gulp.src('./dist/**/*')
+    .pipe(ghPages({
+      branch: 'master'
+    }))
+);
+
 gulp.task('default', ['pug', 'js', 'img', 'devserver'], () => {
   // watch for HTML changes
   gulp.watch('./src/**/*.pug', () => gulp.run('pug') )
+  gulp.watch('./src/**/*.scss', () => gulp.run('pug') )
 
   // watch for JS changes
   gulp.watch('./src/js/**/*.js', () => gulp.run('js') )
