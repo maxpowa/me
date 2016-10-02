@@ -1,0 +1,159 @@
+@import 'https://fonts.googleapis.com/css?family=Raleway:300,400,500';
+
+// We're using the Skeleton CSS Boilerplate
+@import '_skeleton.scss';
+
+/*
+Yes, inches are horrible.
+But hey you get this cool, letter-sized page from it.
+*/
+
+.container {
+  margin-top: 2em;
+  margin-bottom: 2em;
+  padding: 1em;
+  max-width: 8.5in;
+}
+
+h3.title {
+  margin-bottom: 0.1em;
+}
+
+p {
+  font-weight: 300;
+}
+
+img.circle {
+  border-radius: 50%;
+}
+
+img.avatar {
+  display: none;
+}
+
+span.split {
+  // Hidden & a block in true mobile devices
+  visibility: hidden;
+  display: block;
+  max-width: 0;
+  max-height:0;
+}
+
+section.intro > .contact {
+  color: #999999;
+}
+
+.section > .header {
+  margin-top: 1.5rem;
+  margin-bottom: .5rem;
+}
+
+.columns > .header {
+  margin-bottom: 0.1em;
+}
+
+.header .title {
+  font-weight: 600;
+}
+
+.header .company {
+  font-style: italic;
+}
+
+.experience > .language {
+  background-position: right bottom;
+  background-repeat: no-repeat;
+  background-size: 7.5em;
+}
+
+.experience > .javascript {
+  background-image: url('../img/javascript.png');
+}
+
+.experience > .python {
+  background-image: url('../img/python.png');
+}
+
+.quote {
+  border-left: 0.25em solid #DDD;
+  padding-left: 0.5em;
+  margin-bottom: 1em;
+}
+
+a.logo-wrapper {
+  display:none;
+}
+
+.logo {
+  max-width:100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* Larger than mobile but probably still a phone */
+@media (min-width: 400px) {
+  span.split {
+    visibility: visible;
+    display: inline;
+    margin-left: 1em;
+    margin-right: 1em;
+    max-width: auto;
+    max-height: auto;
+  }
+}
+
+/* Larger than phablet (also point when grid becomes active) */
+@media (min-width: 560px) {
+  img.avatar {
+    display: inline;
+    min-width: 1.5in;
+    max-width: 1.5in;
+    max-height: 1.5in;
+    min-height: 1.5in;
+    width: auto;
+  	/*box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);*/
+    border-style: dashed;
+    border-width: 1px;
+    border-color: #a0a0a0;
+  }
+
+  .experience > .language {
+    background-size: 23vw;
+  }
+
+  a.logo-wrapper {
+    display: block;
+    margin-top: 0.5em;
+  }
+
+  .container {
+    padding: 2em;
+  }
+}
+
+/* Larger than tablet */
+@media (min-width: 750px) {}
+
+/* Larger than a piece of letter paper */
+@media (min-width: 8.5in) {
+  .container {
+  	box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+    background-color: white;
+    min-height: 11in;
+    // max-height: 11in;
+  }
+
+  .experience > .language {
+    background-size: auto;
+  }
+
+  body {
+    background-image: url('../img/cream_dust_@2X.png');
+    background-color: #FAFAFA;
+  }
+}
+
+/* Larger than Desktop HD */
+@media (min-width: 1200px) {}
