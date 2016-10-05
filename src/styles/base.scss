@@ -106,19 +106,6 @@ a {
 
 /* Larger than phablet (also point when grid becomes active) */
 @media (min-width: 560px) {
-  img.avatar {
-    display: inline;
-    min-width: 9em;
-    max-width: 9em;
-    max-height: 9em;
-    min-height: 9em;
-    width: auto;
-  	/*box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);*/
-    border-style: dashed;
-    border-width: 1px;
-    border-color: #a0a0a0;
-  }
-
   .experience > .language {
     background-size: 23vw;
   }
@@ -130,6 +117,22 @@ a {
 
   .container {
     padding: 2em;
+  }
+}
+
+/* Larger than phablet, but not necessarily when grid becomes active. Grid uses pixels rather than ems */
+@media (min-width: 35em) {
+  img.avatar {
+    display: inline;
+    min-width: 9em;
+    max-width: 9em;
+    max-height: 9em;
+    min-height: 9em;
+    width: auto;
+    /*box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);*/
+    border-style: dashed;
+    border-width: 1px;
+    border-color: #a0a0a0;
   }
 }
 
