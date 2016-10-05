@@ -1,5 +1,3 @@
-@import 'https://fonts.googleapis.com/css?family=Raleway:300,400,500';
-
 // We're using the Skeleton CSS Boilerplate
 @import '_skeleton.scss';
 
@@ -7,12 +5,29 @@
 Yes, inches are horrible.
 But hey you get this cool, letter-sized page from it.
 */
+body {
+  font-family: 'Raleway', Roboto, Helvetica, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
 
 .container {
   margin-top: 2em;
   margin-bottom: 2em;
   padding: 1em;
   max-width: 51em;
+  animation-duration: 0.5s;
+  transition-timing-function: ease-in;
+  animation-fill-mode: both;
+  animation-name: fadeIn;
 }
 
 h3.title {
@@ -31,21 +46,31 @@ img.avatar {
   display: none;
 }
 
+img.solid {
+  background: repeating-linear-gradient(
+    -45deg,
+    #fafafa,
+    #fafafa 1em,
+    #fff 1em,
+    #fff 2em
+  );
+}
+
 span.split {
   // Hidden & a block in true mobile devices
   visibility: hidden;
   display: block;
   max-width: 0;
-  max-height:0;
+  max-height: 0;
 }
 
 section.intro > .contact {
-  color: #999999;
+  color: #999;
 }
 
 .section > .header {
   margin-top: 1.5rem;
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
 }
 
 .columns > .header {
@@ -81,17 +106,16 @@ section.intro > .contact {
 }
 
 a.logo-wrapper {
-  display:none;
+  display: none;
 }
 
 .logo {
-  max-width:100%;
+  max-width: 100%;
 }
 
 a {
   text-decoration: none;
 }
-
 /* Larger than mobile but probably still a phone */
 @media (min-width: 25em) {
   span.split {
@@ -103,7 +127,6 @@ a {
     max-height: auto;
   }
 }
-
 /* Larger than phablet (also point when grid becomes active) */
 @media (min-width: 560px) {
   a.logo-wrapper {
@@ -139,7 +162,7 @@ a {
 /* Larger than tablet */
 @media (min-width: 51em) {
   .container {
-  	box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
     background-color: white;
     // min-height: 11in;
     // max-height: 11in;

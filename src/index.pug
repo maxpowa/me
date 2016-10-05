@@ -9,7 +9,7 @@ html
     meta(charset='utf-8')
     title Max Gurela
     meta(name='description' content='')
-    meta(name='author' content='Maxfield Gurela <max.gurela AT gmail DOT com>')
+    meta(name='author' content='Maxfield Gurela <max.gurela AT outlook DOT com>')
 
     // Nobody browses the internet on a big screen anymore.
     meta(name='viewport' content='width=device-width, initial-scale=1')
@@ -17,22 +17,24 @@ html
     // Gib favicon pls
     link(rel='icon' href='img/favicon.png')
 
+    script
+      include:uglify-js ./js/webfont.js
+
     // CSS inlined at compile-time
     style
       //- Compile SCSS and then compress
       include:scss:clean-css ./styles/base.scss
 
 
-
   body
     // Skeleton container
     .container
       section.intro.u-text-center
-        img.circle.avatar(src='//gravatar.com/avatar/c94c932597d6b227ffeb9a31c45c1e98?s=256')
+        img.solid.circle.avatar(src='//gravatar.com/avatar/c94c932597d6b227ffeb9a31c45c1e98?s=256')
         h3.title Max Gurela
         .about Python, C#, NodeJS, Java, Groovy Software Engineer<br />
         .contact
-          span.mail #[a(href="mailto:max.gurela@gmail.com")= "max.gurela@gmail.com"]
+          span.mail #[a(href="mailto:max.gurela@outlook.com")= "max.gurela@outlook.com"]
           span.split |
           span.phone #[a(href="tel:+19255494078")= "+1 925 549 4078"]
 
@@ -79,7 +81,7 @@ html
                 li Other stuff
 
 
-        // TODO: Python background faded image thing
+        //- TODO: Python background faded image thing
         .row.sideproject.language.python
           .one.columns
             a.logo-wrapper(target='_blank' href='//sopel.chat')
@@ -96,3 +98,5 @@ html
                 
               ul
                 li Open source
+
+    script(src="./js/egg.js" async defer)
