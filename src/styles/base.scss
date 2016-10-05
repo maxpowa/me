@@ -106,22 +106,22 @@ a {
 
 /* Larger than phablet (also point when grid becomes active) */
 @media (min-width: 560px) {
-  .experience > .language {
-    background-size: 23vw;
-  }
-
   a.logo-wrapper {
     display: block;
     margin-top: 0.5em;
-  }
-
-  .container {
-    padding: 2em;
   }
 }
 
 /* Larger than phablet, but not necessarily when grid becomes active. Grid uses pixels rather than ems */
 @media (min-width: 35em) {
+  .container {
+    padding: 2em;
+  }
+
+  .experience > .language {
+    background-size: 23vw;
+  }
+
   img.avatar {
     display: inline;
     min-width: 9em;
@@ -146,7 +146,7 @@ a {
   }
 
   .experience > .language {
-    background-size: auto;
+    background-size: 12em;
   }
 
   body {
