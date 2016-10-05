@@ -30,6 +30,18 @@ body {
   animation-name: fadeIn;
 }
 
+.container > section {
+  margin-bottom: 2rem;
+}
+
+.container > section:last-child {
+  margin-bottom: 0;
+}
+
+blockquote, dl, figure, form, ol, p, pre, table, ul {
+    margin-bottom: 2rem;
+}
+
 h3.title {
   margin-bottom: 0.1em;
 }
