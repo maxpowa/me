@@ -1,64 +1,120 @@
+/*
+ * Constants
+ */
+
+const SOURCE = './src'
+const OUTPUT = './dist';
+
+/*
+ * Task definitions
+ */
+
 const gulp = require('gulp');
-const pug = require('gulp-pug');
+
+gulp.task('clean', gulp.series(
+    clean
+));
+
+gulp.task('build:internal', gulp.series(
+    gulp.parallel(
+        cname,
+        pug,
+        js,
+        img
+    ),
+    notify
+));
+
+gulp.task('build', gulp.series(
+    clean,
+    'build:internal'
+));
+
+gulp.task('serve', gulp.series(
+    'build',
+    gulp.parallel(
+        watch,
+        serve
+    )
+));
+
+gulp.task('deploy', gulp.series(
+    'build',
+    deploy
+));
+
+gulp.task('default', gulp.series(
+    'serve'
+));
+
+/*
+ * Task implementations
+ */
+
+function watch() {
+    return gulp.watch(SOURCE, gulp.series(
+        'build:internal'
+    ))
+}
+
+function cname() {
+    return gulp.src('./CNAME')
+        .pipe(gulp.dest(OUTPUT))
+}
+
+const del = require('del');
+
+function clean() {
+    return del(OUTPUT)
+}
 
 const connect = require('gulp-connect');
 
-gulp.task('devserver', ['pug', 'js', 'img'], () =>
-  connect.server({
-    fallback: 'dist/index.html',
-    livereload: true,
-    root: 'dist'
-  })
-);
+function serve() {
+    return connect.server({
+        fallback: OUTPUT + '/index.html',
+        livereload: true,
+        root: OUTPUT
+    });
+}
 
-gulp.task('cname', () =>
-  gulp.src('./CNAME')
-    .pipe(gulp.dest('./dist/'))
-);
-
-gulp.task('pug', () =>
-  gulp.src('./src/**/*.pug')
-    .pipe(pug({
-      pretty: true
-    }))
-    .pipe(gulp.dest('./dist/'))
-    .pipe(connect.reload())
-);
-
-const uglify = require('gulp-uglify');
-
-gulp.task('js', () =>
-  gulp.src('./src/js/**/*.js')
-    .pipe(uglify())
-    .pipe(gulp.dest('./dist/js/'))
-    .pipe(connect.reload())
-);
+function notify(done) {
+    connect.reload();
+    return done();
+}
 
 const imagemin = require('gulp-imagemin');
 
-gulp.task('img', () =>
-  gulp.src('./src/img/**/*.*')
-    .pipe(imagemin())
-    .pipe(gulp.dest('./dist/img/'))
-);
+function img() {
+    return gulp.src(SOURCE + '/img/**/*')
+        .pipe(imagemin())
+        .pipe(gulp.dest(OUTPUT + '/img'))
+}
+
+const uglify = require('gulp-uglify');
+
+function js() {
+    return gulp.src(SOURCE + '/js/**/*')
+        .pipe(uglify())
+        .pipe(gulp.dest(OUTPUT + '/js'))
+        .pipe(connect.reload())
+}
+
+const pugjs = require('gulp-pug');
+
+function pug() {
+    return gulp.src(SOURCE + '/**/*.pug')
+        .pipe(pugjs({
+            pretty: true
+        }))
+        .pipe(gulp.dest(OUTPUT))
+}
 
 const ghPages = require('gulp-gh-pages');
 
-gulp.task('deploy', ['cname', 'pug', 'js', 'img'], () =>
-  gulp.src('./dist/**/*')
-    .pipe(ghPages({
-      branch: 'master'
-    }))
-);
-
-gulp.task('default', ['devserver'], () => {
-  // watch for HTML changes
-  gulp.watch('./src/**/*.pug', () => gulp.run('pug') )
-  gulp.watch('./src/**/*.scss', () => gulp.run('pug') )
-
-  // watch for JS changes
-  gulp.watch('./src/js/**/*.js', () => gulp.run('js') )
-
-  // Watch for image changes
-  gulp.watch('./src/img/**/*.*', () => gulp.run('img') )
-});
+function deploy() {
+    return gulp.src(OUTPUT + '/**/*')
+        .pipe(ghPages({
+            branch: 'master'
+        }))
+}

@@ -4,20 +4,23 @@
   "description": "",
   "main": "gulpfile.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "gulp": "gulp",
+    "serve": "gulp serve",
+    "deploy": "gulp deploy"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/maxpowa/maxpowa.github.io.git"
   },
-  "author": "",
+  "author": "Max Gurela",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/maxpowa/maxpowa.github.io/issues"
   },
   "homepage": "https://github.com/maxpowa/maxpowa.github.io#readme",
   "devDependencies": {
-    "gulp": "^3.9.1",
+    "del": "^2.2.2",
+    "gulp": "gulpjs/gulp#4.0",
     "gulp-connect": "^5.0.0",
     "gulp-gh-pages": "^0.5.4",
     "gulp-imagemin": "^3.0.1",
@@ -29,9 +32,10 @@
     "jstransformer-uglify-js": "^1.1.1"
   },
   "dependencies": {},
-  "jshintConfig": {
-    "globals": {
-      "esversion": 6
+  "eslintConfig": {
+    "env": {
+      "node": true,
+      "es6": true
     }
   }
 }

@@ -2,11 +2,11 @@
 @import '_skeleton.scss';
 
 body {
-  font-family: 'Raleway', Roboto, Helvetica, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: 'Raleway', "HelveticaNeue", "Helvetica Neue", Helvetica, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
 html.webfont-loader:not(.wf-active) body {
-    font-family: Roboto, Helvetica, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
 @keyframes fadeIn {
@@ -24,7 +24,7 @@ html.webfont-loader:not(.wf-active) body {
   margin-bottom: 2em;
   padding: 1em;
   max-width: 51em;
-  animation-duration: 0.5s;
+  animation-duration: 0.4s;
   transition-timing-function: ease-in;
   animation-fill-mode: both;
   animation-name: fadeIn;
