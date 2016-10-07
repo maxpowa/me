@@ -1,12 +1,12 @@
 // We're using the Skeleton CSS Boilerplate
 @import '_skeleton.scss';
 
-/*
-Yes, inches are horrible.
-But hey you get this cool, letter-sized page from it.
-*/
 body {
   font-family: 'Raleway', Roboto, Helvetica, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+html.webfont-loader:not(.wf-active) body {
+    font-family: Roboto, Helvetica, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
 @keyframes fadeIn {
@@ -44,10 +44,6 @@ blockquote, dl, figure, form, ol, p, pre, table, ul {
 
 h3.title {
   margin-bottom: 0.1em;
-}
-
-p {
-  font-weight: 300;
 }
 
 img.circle {

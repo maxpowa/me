@@ -3,7 +3,7 @@ const pug = require('gulp-pug');
 
 const connect = require('gulp-connect');
 
-gulp.task('devserver', () =>
+gulp.task('devserver', ['pug', 'js', 'img'], () =>
   connect.server({
     fallback: 'dist/index.html',
     livereload: true,
@@ -51,7 +51,7 @@ gulp.task('deploy', ['cname', 'pug', 'js', 'img'], () =>
     }))
 );
 
-gulp.task('default', ['pug', 'js', 'img', 'devserver'], () => {
+gulp.task('default', ['devserver'], () => {
   // watch for HTML changes
   gulp.watch('./src/**/*.pug', () => gulp.run('pug') )
   gulp.watch('./src/**/*.scss', () => gulp.run('pug') )

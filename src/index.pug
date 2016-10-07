@@ -17,8 +17,13 @@ html
     // Gib favicon pls
     link(rel='icon' href='img/favicon.png')
 
-    script
-      include:uglify-js ./js/webfont.js
+    script.
+      /*
+       * Required to properly display webfont in the event that JS is disabled.
+       * If the doc html doesn't have this class, the webfont will be applied, but if the html does have
+       * this class then the CSS will only apply the webfont if the html also has wf-active
+       */
+      (function(){document.documentElement.classList += ' webfont-loader';})();
 
     // CSS inlined at compile-time
     style
@@ -65,7 +70,7 @@ html
             a.logo-wrapper(target='_blank' href='//servicemax.com')
               img.logo(src='img/servicemax.png')
           .eleven.columns
-            h6.header 
+            h6.header
               span.title Software Engineer
               span.split •
               span.company ServiceMax
@@ -87,7 +92,7 @@ html
             a.logo-wrapper(target='_blank' href='//sopel.chat')
               img.logo(src='img/sopel.png')
           .eleven.columns
-            h6.header 
+            h6.header
               span.title Maintainer
               span.split •
               span.company Sopel
@@ -95,8 +100,11 @@ html
               .quote.
                 Sopel is a simple, easy-to-use, open-source IRC utility bot, written in Python. It's designed to be easy to use, easy to run, and easy to make new features for.
               p.
-                
+
               ul
                 li Open source
 
     script(src="./js/egg.js" async defer)
+
+    script
+      include:uglify-js ./js/webfont.js
