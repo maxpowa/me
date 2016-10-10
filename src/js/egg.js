@@ -104,4 +104,142 @@ var Konami = function (callback) {
 	return konami;
 };
 
-new Konami(function() { alert('Konami Code!')});
+
+/*!
+ * SSSL: smallest, simpelst script loader
+ * version: 1.0.1
+ *
+ * API:
+ * Normal usage
+ * sssl(source [,complete]);
+ *
+ * Example:
+ * sssl('jquery.js', function(){
+ * 	$(function(){
+ * 		$('div').addClass('ready');
+ * 	});
+ * });
+ *
+ * -------------------------------
+ *
+ * Queued script loading (not so fast as yepnope/labJS, but ordered execution):
+ * sssl([source1, source2, source3], complete);
+ *
+ * Example:
+ * sssl(['jquery.js', 'jquery.ui.js'], function(){
+ * 	$(function(){
+ * 		$('div.accordion').accordion();
+ * 	});
+ * });
+ */
+(function(){
+	var firstScript = document.getElementsByTagName('script')[0];
+	var scriptHead = firstScript.parentNode;
+	var re = /ded|co/;
+	var onload = 'onload';
+	var onreadystatechange = 'onreadystatechange';
+	var readyState = 'readyState';
+
+	var load = function(src, fn){
+		var script = document.createElement('script');
+		script[onload] = script[onreadystatechange] = function(){
+			if(!this[readyState] || re.test(this[readyState])){
+				script[onload] = script[onreadystatechange] = null;
+				fn && fn(script);
+				script = null;
+			}
+		};
+		script.async = true;
+		script.src = src;
+		scriptHead.insertBefore(script, firstScript);
+	};
+	window.sssl = function(srces, fn){
+		if(typeof srces == 'string'){
+			load(srces, fn);
+			return;
+		}
+		var src = srces.shift();
+		load(src, function(){
+			if(srces.length){
+				window.sssl(srces, fn);
+			} else {
+				fn && fn();
+			}
+		});
+	};
+})();
+
+
+var stars = [],
+		LOADED = false,
+    WIDTH = window.innerWidth,
+    HEIGHT = window.innerHeight,
+    FPS = 10, // Frames per second
+    NUM_STARS = WIDTH; // Number of stars
+
+function setup() {
+  createCanvas(WIDTH, HEIGHT);
+
+  // Push stars to array
+  for (var i = 0; i < NUM_STARS; i++) {
+    stars.push({
+      x: 0,
+      y: 0,
+      offset: Math.random() * 360,
+      // Weight orbit a little to be outside origin
+      orbit: (Math.random()+0.01) * max(WIDTH, HEIGHT),
+      radius: Math.random() * 2,
+      vx: Math.floor(Math.random() * 10) - 5,
+      vy: Math.floor(Math.random() * 10) - 5
+    });
+  }
+
+	document.body.className += ' egg';
+
+  frameRate(FPS);
+  loop();
+}
+
+function draw() {
+  background(24, 24, 24);
+  push();
+  noFill();
+  colorMode(RGB, 255, 255, 255, 1);
+  stroke(240,240,240, 1);
+  strokeCap(ROUND);
+  strokeWeight(2);
+  for (var i = 0, x = stars.length; i < x; i++) {
+    var s = stars[i];
+    ellipse(s.x, s.y, s.radius, 0);
+  }
+  pop();
+  update();
+}
+
+function update() {
+  var originX = WIDTH / 2;
+  var originY = HEIGHT / 2;
+
+  for (var i = 0, x = stars.length; i < x; i++) {
+    var s = stars[i];
+
+
+    var rad = (frameCount * (1/(s.orbit*2 + s.offset)) + s.offset) % TAU;
+    s.x = (originX + cos(rad)*(s.orbit*2));
+    s.y = (originY + sin(rad)*(s.orbit));
+  }
+}
+
+function windowResized() {
+    WIDTH = window.innerWidth,
+    HEIGHT = window.innerHeight,
+    resizeCanvas(WIDTH, HEIGHT);
+}
+
+
+new Konami(function() {
+	if (!LOADED) {
+		LOADED = true;
+		sssl(["https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.2/p5.min.js"])
+	}
+});

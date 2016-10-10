@@ -28,14 +28,6 @@ html
     // Gib favicon pls
     link(rel='icon' href='img/favicon.png')
 
-    script.
-      /*
-       * Required to properly display webfont in the event that JS is disabled.
-       * If the doc html doesn't have this class, the webfont will be applied, but if the html does have
-       * this class then the CSS will only apply the webfont if the html also has wf-active
-       */
-      (function(){document.documentElement.classList += ' webfont-loader';})();
-
     // CSS inlined at compile-time
     style
       //- Compile SCSS and then compress
@@ -47,7 +39,7 @@ html
     .container
       section.intro.u-text-center
         img.solid.circle.avatar(src='//gravatar.com/avatar/c94c932597d6b227ffeb9a31c45c1e98?s=256')
-        h3.title Max Gurela
+        h3.name Max Gurela
         .about Python, C#, NodeJS, Java, Groovy Software Engineer<br />
         .contact
           span.mail #[a(href="mailto:max.gurela@outlook.com")= "max.gurela@outlook.com"]
