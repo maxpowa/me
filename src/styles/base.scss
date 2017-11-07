@@ -76,7 +76,7 @@ a {
   }
 }
 
-blockquote, dl, figure, form, ol, p, pre, table, ul {
+blockquote, dl, figure, form, ol, p, pre, table, ul, .quote {
   margin-bottom: 2rem;
 }
 
@@ -121,6 +121,14 @@ section.intro {
     .company {
       font-style: italic;
     }
+
+    .school {
+      font-style: italic;
+    }
+
+    .term {
+      opacity: 0.4;
+    }
   }
 }
 
@@ -140,11 +148,11 @@ a.logo-wrapper {
   }
 
   .language.javascript {
-    background-image: url('../img/javascript.png');
+    background-image: url('./img/javascript.png');
   }
 
   .language.python {
-    background-image: url('../img/python.png');
+    background-image: url('./img/python.png');
   }
 }
 
@@ -225,7 +233,7 @@ a.logo-wrapper {
   }
 
   body {
-    background-image: url('../img/cream_dust_@2X.png');
+    background-image: url('./img/cream_dust_@2X.png');
     background-color: $accent-background;
   }
 }
