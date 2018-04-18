@@ -154,6 +154,10 @@ a.logo-wrapper {
   .language.python {
     background-image: url('./img/python.png');
   }
+
+  .language.crystal {
+    background-image: url('./img/crystal.png');
+  }
 }
 
 @keyframes fadeIn {
@@ -181,8 +185,6 @@ a.logo-wrapper {
   span.split {
     visibility: visible;
     display: inline;
-    margin-left: 1em;
-    margin-right: 1em;
     max-width: auto;
     max-height: auto;
   }
